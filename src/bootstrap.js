@@ -242,6 +242,7 @@ async function importSeedData() {
     article: ['find', 'findOne'],
     category: ['find', 'findOne'],
     author: ['find', 'findOne'],
+    tag: ['find', 'findOne'],
     global: ['find', 'findOne'],
     about: ['find', 'findOne'],
   });

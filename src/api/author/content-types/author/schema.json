@@ -24,6 +24,14 @@
     "email": {
       "type": "string"
     },
+    "bio": {
+      "type": "text"
+    },
+    "socialMedia": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.social-media"
+    },
     "articles": {
       "type": "relation",
       "relation": "oneToMany",
