@@ -36,7 +36,7 @@ All controllers/services/routes use Strapi's factory pattern (`createCoreControl
 
 **Collection Types** (multiple entries):
 - `article`: Blog posts with title, slug, description, dynamic content blocks (DynamicZone), cover image, optional video, author/category/tags relations, and boolean flags (highlighted, callout)
-- `author`: Content creators with name, avatar, email
+- `author`: Content creators with name, avatar, email, bio, and repeatable social media links (X, LinkedIn)
 - `category`: Article categorization with name, slug, description, and tags relation
 - `tag`: Article and category tagging with name, slug, description, articles relation, and categories relation
 
@@ -65,12 +65,16 @@ Category n:m Tag (manyToMany)
 - `highlighted`: boolean - Flag for featured/highlighted articles (default: false)
 - `callout`: boolean - Flag for callout articles (default: false)
 
-**DynamicZone Components** (in `src/components/shared/`):
-Articles and the About page use a DynamicZone field with reusable blocks:
+**Reusable Components** (in `src/components/shared/`):
+
+DynamicZone components (used in articles and about page):
 - `shared.media`: Single file/image
 - `shared.quote`: Quote block with author attribution
 - `shared.rich-text`: Markdown content
 - `shared.slider`: Image carousel (multiple files)
+
+Repeatable components:
+- `shared.social-media`: Social media link with platform enum (x, linkedin) and URL - used in author profiles
 
 ### Configuration Files
 
