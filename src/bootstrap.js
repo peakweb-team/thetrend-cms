@@ -245,6 +245,10 @@ async function importSeedData() {
     tag: ['find', 'findOne'],
     global: ['find', 'findOne'],
     about: ['find', 'findOne'],
+    glossary: ['find', 'findOne'],
+    'glossary-category': ['find', 'findOne'],
+    directory: ['find', 'findOne'],
+    'directory-category': ['find', 'findOne'],
   });
 
   // Create all entries
