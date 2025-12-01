@@ -1,16 +1,14 @@
 {
   "collectionName": "components_shared_seos",
   "info": {
-    "name": "Seo",
-    "icon": "allergies",
-    "displayName": "Seo",
-    "description": ""
+    "displayName": "SEO",
+    "icon": "search",
+    "description": "Search engine optimization metadata. All fields optional - falls back to content fields if empty."
   },
-  "options": {},
   "attributes": {
     "metaTitle": {
       "type": "string",
-      "required": true,
+      "maxLength": 60,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -19,14 +17,14 @@
     },
     "metaDescription": {
       "type": "text",
-      "required": true,
+      "maxLength": 160,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
     },
-    "shareImage": {
+    "metaImage": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -34,6 +32,43 @@
       "pluginOptions": {
         "i18n": {
           "localized": false
+        }
+      }
+    },
+    "keywords": {
+      "type": "string",
+      "maxLength": 255,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "canonicalURL": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "metaRobots": {
+      "type": "enumeration",
+      "enum": ["index,follow", "index,nofollow", "noindex,follow", "noindex,nofollow"],
+      "default": "index,follow",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "metaSocial": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.meta-social",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
         }
       }
     }

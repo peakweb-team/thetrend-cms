@@ -5,7 +5,7 @@
     "singularName": "global",
     "pluralName": "globals",
     "displayName": "Global",
-    "description": "Define global settings"
+    "description": "Site-wide settings, branding, and default SEO configuration"
   },
   "options": {
     "draftAndPublish": false
@@ -19,9 +19,29 @@
     "siteName": {
       "type": "string",
       "required": true,
+      "maxLength": 60,
       "pluginOptions": {
         "i18n": {
           "localized": true
+        }
+      }
+    },
+    "siteDescription": {
+      "type": "text",
+      "required": true,
+      "maxLength": 160,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "siteUrl": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
         }
       }
     },
@@ -29,19 +49,21 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos"],
+      "allowedTypes": ["images"],
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
       }
     },
-    "siteDescription": {
-      "type": "text",
-      "required": true,
+    "siteLogo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"],
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -49,6 +71,16 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "organization": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.organization",
       "pluginOptions": {
         "i18n": {
           "localized": true
