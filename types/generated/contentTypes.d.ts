@@ -467,7 +467,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     cover: Schema.Attribute.Media<'images' | 'files' | 'videos'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     createdAt: Schema.Attribute.DateTime;
@@ -520,7 +520,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     video: Schema.Attribute.Media<'videos'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
   };
@@ -740,7 +740,7 @@ export interface ApiDirectoryDirectory extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     imageAlt: Schema.Attribute.String &
@@ -973,7 +973,7 @@ export interface ApiGlossaryGlossary extends Struct.CollectionTypeSchema {
     image: Schema.Attribute.Media<'images' | 'files' | 'videos'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     imageAlt: Schema.Attribute.String &

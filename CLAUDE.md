@@ -2,6 +2,21 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## CRITICAL: Version Verification
+
+**ALWAYS verify the Strapi version before researching or implementing any feature.**
+
+- **Current version: Strapi 5.28.0** (check `package.json` for latest)
+- Strapi 5 has significant breaking changes from Strapi 4 (different APIs, lifecycle event structures, etc.)
+- When searching documentation, GitHub issues, or Stack Overflow, **always filter for Strapi 5 specifically**
+- Do NOT use Strapi 4 patterns, APIs, or code examples - they will not work correctly
+
+**Before any implementation:**
+1. Check `package.json` for the exact `@strapi/strapi` version
+2. Use Strapi 5 official documentation: https://docs.strapi.io/
+3. When searching for solutions, include "Strapi 5" or "Strapi v5" in search queries
+4. Verify any code examples are for Strapi 5, not Strapi 4
+
 ## Project Overview
 
 This is a **Strapi 5.28.0 headless CMS** for a blog application. It provides a REST API for managing articles, authors, categories, and site-wide settings. The admin panel is built with React 18 + Vite, and the backend uses SQLite by default (with MySQL/PostgreSQL support).
@@ -170,14 +185,67 @@ module.exports = createCoreController('api::article.article', ({ strapi }) => ({
 Add lifecycle hooks in `src/api/{contentType}/content-types/{contentType}/lifecycles.js`:
 ```javascript
 module.exports = {
-  beforeCreate(event) {
-    // Runs before creating an entry
+  async beforeCreate(event) {
+    // Strapi 5 event structure: data is inside params.data, NOT at top level
+    const { params } = event;
+    const data = params?.data;           // The actual data being created
+    const locale = data?.locale;          // Locale code (e.g., 'en', 'es')
+    const documentId = data?.documentId;  // Document ID for i18n locale versions
+
+    // Modify data directly
+    data.someField = 'value';
   },
-  afterCreate(event) {
-    // Runs after creating an entry
+  async afterCreate(event) {
+    const { result, params } = event;
+    // result contains the created entry
+  },
+  async beforeUpdate(event) {
+    const { params } = event;
+    const data = params?.data;
+    // Modify or delete fields from data
+  },
+  async afterUpdate(event) {
+    const { result, params } = event;
+    // result contains the updated entry
   },
 };
 ```
+
+**Important Strapi 5 lifecycle notes:**
+- Data is at `event.params.data`, NOT `event.data`
+- Locale is at `event.params.data.locale`
+- Document ID is at `event.params.data.documentId`
+- Use `strapi.documents()` API, not `strapi.entityService`
+- **When calling `strapi.documents().update()` in `afterUpdate` hooks, use `setImmediate()` to defer execution** - this prevents interference with the parent update operation
+
+### i18n Field-Level Localization
+
+When a content type has i18n enabled (`pluginOptions.i18n.localized: true`), each field can be configured independently:
+
+```json
+{
+  "fieldName": {
+    "type": "string",
+    "pluginOptions": {
+      "i18n": {
+        "localized": true   // Different value per locale
+        // OR
+        "localized": false  // SHARED across all locales
+      }
+    }
+  }
+}
+```
+
+**Critical behavior:**
+- `localized: true` - Field can have different values in each locale
+- `localized: false` - Field is **shared across ALL locales**. Changing it in Spanish changes it in English too!
+
+**Common patterns:**
+- Localized: `title`, `description`, `content`, `seo`, media assets (usually)
+- Non-localized: `slug` (URL consistency), `email`, `highlighted` flags, identity fields like `avatar`
+
+See `docs/i18n/README.md` for the full i18n implementation guide.
 
 ## Important Notes
 

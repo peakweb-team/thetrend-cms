@@ -33,3 +33,6 @@ This documentation provides an overview of the Strapi CMS content types, compone
 - [SEO Implementation Guide](./seo/implementation.md) - How SEO is configured in the CMS
 - [JSON-LD Structured Data](./seo/json-ld.md) - Schema.org structured data guide
 - [Content Best Practices](./seo/best-practices.md) - SEO content guidelines
+
+## Internationalization
+- [i18n Overview](./i18n/README.md) - Multi-language content management
