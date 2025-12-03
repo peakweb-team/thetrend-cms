@@ -1,0 +1,49 @@
+{
+  "collectionName": "components_shared_meta_socials",
+  "info": {
+    "displayName": "Meta Social",
+    "icon": "share-alt",
+    "description": "Platform-specific social sharing metadata (Facebook Open Graph, Twitter Cards)"
+  },
+  "attributes": {
+    "socialNetwork": {
+      "type": "enumeration",
+      "enum": ["Facebook", "Twitter"],
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 60,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 65,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    }
+  }
+}

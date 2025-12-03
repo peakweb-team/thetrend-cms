@@ -249,6 +249,7 @@ async function importSeedData() {
     'glossary-category': ['find', 'findOne'],
     directory: ['find', 'findOne'],
     'directory-category': ['find', 'findOne'],
+    'legal-page': ['find', 'findOne'],
   });
 
   // Create all entries

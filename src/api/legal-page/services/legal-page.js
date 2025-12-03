@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * about service.
+ * legal-page service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::about.about');
+module.exports = createCoreService('api::legal-page.legal-page');
