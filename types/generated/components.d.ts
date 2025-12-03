@@ -173,7 +173,7 @@ export interface SharedRichText extends Struct.ComponentSchema {
 export interface SharedSeo extends Struct.ComponentSchema {
   collectionName: 'components_shared_seos';
   info: {
-    description: 'Search engine optimization metadata. All fields optional - falls back to content fields if empty.';
+    description: 'SEO metadata. All fields optional - falls back to content fields. canonicalURL must include protocol (https://) or it will be treated as a relative path.';
     displayName: 'SEO';
     icon: 'search';
   };

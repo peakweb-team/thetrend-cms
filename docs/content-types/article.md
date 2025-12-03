@@ -3,31 +3,34 @@
 Blog posts and news articles with rich content, author attribution, and SEO support.
 
 ## Schema Location
+
 `src/api/article/content-types/article/schema.json`
 
 ## Fields
 
-| Field | Type | Required | Localized | Description |
-|-------|------|----------|-----------|-------------|
-| `title` | string | Yes | Yes | Article headline |
-| `description` | text | Yes | Yes | Short excerpt/summary |
-| `slug` | uid | Yes | No | URL-friendly identifier (auto-generated from title) |
-| `cover` | media | No | No | Cover image |
-| `video` | media | No | No | Video content (videos only) |
-| `author` | relation | No | - | Author (manyToOne to Author) |
-| `category` | relation | No | - | Category (manyToOne to Category) |
-| `tags` | relation | No | - | Tags (manyToMany to Tag) |
-| `blocks` | dynamiczone | No | Yes | Rich content blocks (rich-text, media, quote, slider) |
-| `highlighted` | boolean | No | No | Feature flag for highlighted articles (default: false) |
-| `callout` | boolean | No | No | Feature flag for callout articles (default: false) |
-| `seo` | component | No | Yes | SEO metadata (shared.seo) |
+| Field         | Type        | Required | Localized | Description                                            |
+| ------------- | ----------- | -------- | --------- | ------------------------------------------------------ |
+| `title`       | string      | Yes      | Yes       | Article headline                                       |
+| `description` | text        | Yes      | Yes       | Short excerpt/summary                                  |
+| `slug`        | uid         | Yes      | No        | URL-friendly identifier (auto-generated from title)    |
+| `cover`       | media       | No       | No        | Cover image                                            |
+| `video`       | media       | No       | No        | Video content (videos only)                            |
+| `author`      | relation    | No       | -         | Author (manyToOne to Author)                           |
+| `category`    | relation    | No       | -         | Category (manyToOne to Category)                       |
+| `tags`        | relation    | No       | -         | Tags (manyToMany to Tag)                               |
+| `blocks`      | dynamiczone | No       | Yes       | Rich content blocks (rich-text, media, quote, slider)  |
+| `highlighted` | boolean     | No       | No        | Feature flag for highlighted articles (default: false) |
+| `callout`     | boolean     | No       | No        | Feature flag for callout articles (default: false)     |
+| `seo`         | component   | No       | Yes       | SEO metadata (shared.seo)                              |
 
 ## Options
-- **Draft & Publish**: Enabled
-- **i18n**: Enabled
+
+-   **Draft & Publish**: Enabled
+-   **i18n**: Enabled
 
 ## API Endpoints
-```
+
+```http
 GET    /api/articles
 GET    /api/articles/:id
 POST   /api/articles
@@ -36,7 +39,8 @@ DELETE /api/articles/:id
 ```
 
 ## Query Examples
-```bash
+
+```http
 # Get articles with all relations
 /api/articles?populate=*
 
@@ -51,4 +55,5 @@ DELETE /api/articles/:id
 ```
 
 ## JSON-LD Schema
+
 Articles generate `BlogPosting` structured data. See [JSON-LD Guide](../seo/json-ld.md).
