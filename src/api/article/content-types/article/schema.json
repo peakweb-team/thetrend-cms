@@ -120,6 +120,16 @@
           "localized": true
         }
       }
+    },
+    "recommendedArticles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
