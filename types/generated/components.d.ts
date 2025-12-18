@@ -62,7 +62,7 @@ export interface SharedMetaSocial extends Struct.ComponentSchema {
         };
       }> &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 65;
+        maxLength: 200;
       }>;
     image: Schema.Attribute.Media<'images'> &
       Schema.Attribute.SetPluginOptions<{
